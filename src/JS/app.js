@@ -21,3 +21,18 @@ console.log(ui);
 console.log(items);
 
 ui.populateItemList(items);
+
+// Add item Event Listener
+document.querySelector(".add-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  // Get User Input
+  const input = ui.getItemInput();
+  // Check valid input
+  if (input.name !== "" && input.calories !== "") {
+    // Add Item to State
+    const newItem = ItemCtrl.addItem(input.name, input.calories);
+    // Update DOM
+    ui.addItemToList(newItem);
+    ui.clearInput();
+  }
+});
