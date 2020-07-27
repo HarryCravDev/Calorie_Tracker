@@ -40,37 +40,10 @@ export class ItemControl {
       calories,
     };
 
-    // const item2 = new ItemControl(id, name, calories);
-
     // Add item to state
     this.state.items.push(item);
+
+    // Return Object
+    return item;
   };
 }
-
-// export const ItemCtrl = (() => {
-//   // Item Constructor
-//   const Item = (id, name, calories) => {
-//     this.id = id;
-//     this.name = name;
-//     this.calories = calories;
-//   };
-
-//   // Data Structure / State
-//   const state = {
-//     items: [
-//       { id: 0, name: "Chicken & Rice", calories: 600 },
-//       { id: 1, name: "Eggs & Beans", calories: 450 },
-//       { id: 2, name: "Pizza", calories: 850 },
-//     ],
-//     currentItem: null,
-//     totalCalories: 0,
-//   };
-
-//   console.log("Working");
-
-//   return {
-//     logState: function () {
-//       return state;
-//     },
-//   };
-// })();
