@@ -7,11 +7,7 @@ export class ItemControl {
 
   // Item State
   state = {
-    items: [
-      { id: 0, name: "Chicken & Rice", calories: 600 },
-      { id: 1, name: "Eggs with Salad", calories: 450 },
-      { id: 2, name: "Pizza", calories: 850 },
-    ],
+    items: [],
     currentItem: null,
     totalCalories: 0,
   };
@@ -46,4 +42,17 @@ export class ItemControl {
     // Return Object
     return item;
   };
+
+  get getTotalCalories() {
+    let total = 0;
+
+    // Loop through items and add cals
+    this.state.items.forEach((item) => (total += item.calories));
+
+    // Set Calories in state
+    this.state.totalCalories = total;
+
+    // Return Total Calories Value
+    return this.state.totalCalories;
+  }
 }

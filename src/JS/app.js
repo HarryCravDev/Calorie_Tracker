@@ -4,23 +4,15 @@ import { UI } from "./Ui";
 const ItemCtrl = new ItemControl();
 const ui = new UI();
 
+// Fetch Items
 const items = ItemCtrl.state.items;
-// App Controller
-// const App = ((ItemCtrl) => {})(ItemCtrl);
 
-let items1 = {
-  id: 3,
-  name: "Curry",
-  calories: 600,
-};
-
-ItemCtrl.addItem("Beef Noodles", "600");
-ItemCtrl.addItem("Duck Noodles", "850");
-
-console.log(ui);
-console.log(items);
-
-ui.populateItemList(items);
+// Validate Items
+if (items.length === 0) {
+} else {
+  // Populate UI with Items
+  ui.populateItemList(items);
+}
 
 // Add item Event Listener
 document.querySelector(".add-btn").addEventListener("click", (e) => {
@@ -33,6 +25,14 @@ document.querySelector(".add-btn").addEventListener("click", (e) => {
     const newItem = ItemCtrl.addItem(input.name, input.calories);
     // Update DOM
     ui.addItemToList(newItem);
+
+    // Get Total Calories
+    const totalCalories = ItemCtrl.getTotalCalories;
+
+    // Show Total Calories
+    ui.showTotalCalories(totalCalories);
+
+    // Clear Inputs
     ui.clearInput();
   }
 });

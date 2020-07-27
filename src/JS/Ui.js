@@ -43,4 +43,8 @@ export class UI {
     // Insert into DOM
     document.getElementById("item-list").insertAdjacentElement("beforeend", li);
   };
+
+  showTotalCalories = (total) => {
+    document.querySelector(".total-calories").textContent = total;
+  };
 }
