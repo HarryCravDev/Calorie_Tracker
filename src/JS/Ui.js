@@ -94,9 +94,9 @@ export class UI {
 
   // Show Edit State buttons
   showEditState = () => {
-    document.querySelector(".add-btn").style.display = "inline";
+    document.querySelector(".add-btn").style.display = "none";
     document.querySelector(".update-btn").style.display = "inline";
     document.querySelector(".delete-btn").style.display = "inline";
-    document.querySelector(".back-btn").style.display = "none";
+    document.querySelector(".back-btn").style.display = "inline";
   };
 }

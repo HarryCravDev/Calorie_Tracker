@@ -48,6 +48,11 @@ document.querySelector(".add-btn").addEventListener("click", (e) => {
   }
 });
 
+// Event Listener - Back Button
+document
+  .querySelector(".back-btn")
+  .addEventListener("click", ui.setInitialState);
+
 // Event Listener - Edit item
 document.getElementById("item-list").addEventListener("click", itemEditClick);
 
