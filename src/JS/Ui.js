@@ -61,8 +61,6 @@ export class UI {
     // Turn node list into Array
     listItems = Array.from(listItems);
 
-    console.log(item);
-    console.log(listItems);
     // Loop and update
     listItems.forEach((element) => {
       const itemID = element.getAttribute("id");
@@ -76,6 +74,23 @@ export class UI {
         `;
       }
     });
+  };
+
+  // Delete List Item
+  deleteListItem = (id) => {
+    const item = document.getElementById(id);
+    item.remove();
+  };
+
+  // Delete All Items
+  removeItems = () => {
+    let listItems = document.querySelectorAll(".collection-item");
+
+    // Items into Array
+    listItems = Array.from(listItems);
+
+    // Loop remove all items
+    listItems.forEach((item) => item.remove());
   };
 
   // Display Total Number of Calories

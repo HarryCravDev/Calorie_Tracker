@@ -53,10 +53,25 @@ document
   .querySelector(".back-btn")
   .addEventListener("click", ui.setInitialState);
 
+// Event Listener - Delete Button
+document
+  .querySelector(".delete-btn")
+  .addEventListener("click", itemDeleteSubmit);
+
 // Event Listener - Edit item
 document.getElementById("item-list").addEventListener("click", itemEditClick);
 
-// Edit Item State
+// Event Listener - Clear All
+document
+  .querySelector(".clear-btn")
+  .addEventListener("click", clearAllItemsClick);
+
+// Event Listener - Update Item
+document
+  .querySelector(".update-btn")
+  .addEventListener("click", itemUpdateSubmit);
+
+// Edit Item Function
 function itemEditClick(e) {
   if (e.target.classList.contains("edit-item")) {
     // Get list item ID
@@ -76,11 +91,7 @@ function itemEditClick(e) {
   }
 }
 
-// Update Item Event
-document
-  .querySelector(".update-btn")
-  .addEventListener("click", itemUpdateSubmit);
-
+// Item Update Function
 function itemUpdateSubmit(e) {
   e.preventDefault();
   // Get item input
@@ -100,4 +111,42 @@ function itemUpdateSubmit(e) {
 
   ui.setInitialState();
 }
-console.log(ItemCtrl.logState());
+
+// Delete Item Function
+function itemDeleteSubmit(e) {
+  e.preventDefault();
+
+  // Get current item
+  const currentItem = ItemCtrl.getCurrentItem;
+
+  // Delete from data structure
+  ItemCtrl.deleteItem(currentItem.id);
+
+  // Delete from UI
+  ui.deleteListItem(currentItem.id);
+
+  // Get Total Calories
+  const totalCalories = ItemCtrl.getTotalCalories;
+
+  // Show Total Calories
+  ui.showTotalCalories(totalCalories);
+
+  // Change from edit state
+  ui.setInitialState();
+}
+
+// Clear All Function
+function clearAllItemsClick() {
+  // Delete items from data structure
+  ItemCtrl.clearAllItems();
+
+  // Get Total Calories
+  const totalCalories = ItemCtrl.getTotalCalories;
+
+  // Show Total Calories
+  ui.showTotalCalories(totalCalories);
+
+  // Delete items from UI
+  ui.removeItems();
+  ui.clearInput();
+}

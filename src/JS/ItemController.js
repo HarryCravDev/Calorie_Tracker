@@ -20,6 +20,11 @@ export class ItemControl {
     return this.state.items;
   }
 
+  // Get Items Method
+  get getCurrentItem() {
+    return this.state.currentItem;
+  }
+
   // Log State
   logState = () => {
     return this.state;
@@ -79,6 +84,19 @@ export class ItemControl {
     });
     return found;
   };
+
+  // Delete Item
+  deleteItem = (id) => {
+    // Get Ids then index of selected item.
+    const ids = this.state.items.map((item) => item.id);
+    const index = ids.indexOf(id);
+
+    // Remove Item
+    this.state.items.splice(index, 1);
+  };
+
+  // Clear All Items
+  clearAllItems = () => (this.state.items = []);
 
   // Set Current Item
   setCurrentItem = (item) => {
