@@ -1,3 +1,6 @@
+import LocalStorageJS from "./LocalStorage";
+const ls = new LocalStorageJS();
+
 export class ItemControl {
   constructor(id, name, calories) {
     this.id = id;
@@ -7,10 +10,7 @@ export class ItemControl {
 
   // Item State
   state = {
-    items: [
-      { id: 1, name: "noodles", calories: 400 },
-      { id: 2, name: "Burger", calories: 600 },
-    ],
+    items: ls.getItemsFromStorage(),
     currentItem: null,
     totalCalories: 0,
   };

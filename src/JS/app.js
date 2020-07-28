@@ -1,9 +1,11 @@
 import { ItemControl } from "./ItemController";
 import { UI } from "./Ui";
+import LocalStorageJS from "./LocalStorage";
 
 // Init Classes
 const ItemCtrl = new ItemControl();
 const ui = new UI();
+const ls = new LocalStorageJS();
 
 // Set Initial State
 ui.setInitialState();
@@ -36,6 +38,9 @@ document.querySelector(".add-btn").addEventListener("click", (e) => {
     const newItem = ItemCtrl.addItem(input.name, input.calories);
     // Update DOM
     ui.addItemToList(newItem);
+
+    // Add to Local Storage
+    ls.storeItem(newItem);
 
     // Get Total Calories
     const totalCalories = ItemCtrl.getTotalCalories;
@@ -109,6 +114,9 @@ function itemUpdateSubmit(e) {
   // Show Total Calories
   ui.showTotalCalories(totalCalories);
 
+  // Update Local Storage
+  ls.updateItemStorage(updatedItem);
+
   ui.setInitialState();
 }
 
@@ -131,6 +139,9 @@ function itemDeleteSubmit(e) {
   // Show Total Calories
   ui.showTotalCalories(totalCalories);
 
+  // Update Local Storage
+  ls.deleteItemFromStorage(currentItem);
+
   // Change from edit state
   ui.setInitialState();
 }
@@ -149,4 +160,7 @@ function clearAllItemsClick() {
   // Delete items from UI
   ui.removeItems();
   ui.clearInput();
+
+  // Update Local Storage
+  ls.clearItemsFromStorage();
 }
